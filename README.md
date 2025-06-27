@@ -1,4 +1,4 @@
-# meeting-notes-mac
+# openscriber
 
 An Electron application with React and TypeScript
 
