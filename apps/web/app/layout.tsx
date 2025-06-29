@@ -11,7 +11,7 @@ const fontSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "OpenScriber - Open Source AI Note Taker",
+  title: "OpenScriber - Open Source AI Note Taker for your meetings",
   description:
     "Open source granola.ai alternative AI note taker app for your back to back meetings.",
   keywords: [
@@ -23,16 +23,27 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Moinul Moin" }],
   openGraph: {
-    title: "OpenScriber - Open Source AI Note Taker",
+    title: "OpenScriber - Open Source AI Note Taker for your meetings",
     description:
       "Open source granola.ai alternative AI note taker app for your back to back meetings.",
-    type: "website"
+    type: "website",
+    url: "https://openscriber.com",
+    siteName: "OpenScriber",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "OpenScriber - Open Source AI meeting note taker",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "OpenScriber",
+    title: "OpenScriber - Open Source AI meeting note taker for your meetings",
     description:
-      "Open source granola.ai alternative AI note taker app for your back to back meetings"
+      "Open source granola.ai alternative AI note taker app for your back to back meetings",
+    images: ["/og-image.png"],
   }
 };
 
