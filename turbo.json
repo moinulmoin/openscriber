@@ -1,5 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["NODE_ENV", "KV_REDIS_REST_URL", "KV_REDIS_REST_TOKEN"],
   "ui": "tui",
   "tasks": {
     "build": {
