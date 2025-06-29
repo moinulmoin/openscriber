@@ -1,6 +1,8 @@
 "use server"
 
-import { kv } from "@vercel/kv"
+import { Redis } from "@upstash/redis"
+
+const redis = Redis.fromEnv()
 
 export type FormState = {
   status: "idle" | "success" | "error"
@@ -25,7 +27,7 @@ export async function joinWaitlist(
     }
 
     // Check if email already exists
-    const exists = await kv.sismember("waitlist:emails", email)
+    const exists = await redis.sismember("waitlist:emails", email)
     if (exists) {
       return {
         status: "error",
@@ -34,16 +36,16 @@ export async function joinWaitlist(
     }
 
     // Add email to set (prevents duplicates)
-    await kv.sadd("waitlist:emails", email)
+    await redis.sadd("waitlist:emails", email)
 
     // Store signup timestamp
-    await kv.hset(`waitlist:user:${email}`, {
+    await redis.hset(`waitlist:user:${email}`, {
       email,
       timestamp: new Date().toISOString()
     })
 
     // Increment total count
-    const count = await kv.incr("waitlist:count")
+    const count = await redis.incr("waitlist:count")
 
     return {
       status: "success",

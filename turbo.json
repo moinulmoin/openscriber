@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalEnv": ["NODE_ENV", "KV_REDIS_REST_URL", "KV_REDIS_REST_TOKEN", "NEXT_PUBLIC_APP_URL"],
+  "globalEnv": ["NODE_ENV", "UPSTASH_REDIS_REST_URL", "UPSTASH_REDIS_REST_TOKEN", "NEXT_PUBLIC_APP_URL"],
   "ui": "tui",
   "tasks": {
     "build": {
