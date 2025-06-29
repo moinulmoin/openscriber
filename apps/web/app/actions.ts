@@ -26,31 +26,19 @@ export async function joinWaitlist(
       }
     }
 
-    // Check if email already exists
-    const exists = await redis.sismember("waitlist:emails", email)
-    if (exists) {
+    // Try to add email to set - returns 1 if new, 0 if already exists
+    const added = await redis.sadd("waitlist:emails", email)
+
+    if (added === 0) {
       return {
         status: "error",
         message: "You're already on the waitlist!"
       }
     }
 
-    // Add email to set (prevents duplicates)
-    await redis.sadd("waitlist:emails", email)
-
-    // Store signup timestamp
-    await redis.hset(`waitlist:user:${email}`, {
-      email,
-      timestamp: new Date().toISOString()
-    })
-
-    // Increment total count
-    const count = await redis.incr("waitlist:count")
-
     return {
       status: "success",
       message: "Welcome to the waitlist! We'll notify you when OpenScriber launches.",
-      position: count
     }
   } catch (error) {
     console.error("Waitlist error:", error)
