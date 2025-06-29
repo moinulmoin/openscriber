@@ -1,4 +1,4 @@
-import './assets/main.css'
+import '@workspace/ui/globals.css'
 
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'

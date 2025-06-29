@@ -1,34 +1,31 @@
-# openscriber
+# shadcn/ui monorepo template
 
-An Electron application with React and TypeScript
+This template is for creating a monorepo with shadcn/ui.
 
-## Recommended IDE Setup
-
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-
-## Project Setup
-
-### Install
+## Usage
 
 ```bash
-$ pnpm install
+pnpm dlx shadcn@latest init
 ```
 
-### Development
+## Adding components
+
+To add components to your app, run the following command at the root of your `web` app:
 
 ```bash
-$ pnpm dev
+pnpm dlx shadcn@latest add button -c apps/web
 ```
 
-### Build
+This will place the ui components in the `packages/ui/src/components` directory.
 
-```bash
-# For windows
-$ pnpm build:win
+## Tailwind
 
-# For macOS
-$ pnpm build:mac
+Your `tailwind.config.ts` and `globals.css` are already set up to use the components from the `ui` package.
 
-# For Linux
-$ pnpm build:linux
+## Using components
+
+To use the components in your app, import them from the `ui` package.
+
+```tsx
+import { Button } from "@workspace/ui/components/button"
 ```
